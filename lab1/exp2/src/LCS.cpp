@@ -131,6 +131,8 @@ int main()
                 resfile<<res[i][j];
             resfile<<endl;
         }
+        
+        
 
         resfile.close();
     }
