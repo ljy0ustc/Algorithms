@@ -89,9 +89,9 @@ int LCS_Length(int n)
 }
 int main()
 {
-    infile.open(".\\exp2\\input\\1_2_input.txt", ios::in);
-    timefile.open(".\\exp2\\output\\time.txt",ios::out);
-    string file_path_base=".\\exp2\\output\\result_";
+    infile.open("..\\input\\1_2_input.txt", ios::in);
+    timefile.open("..\\output\\time.txt",ios::out);
+    string file_path_base="..\\output\\result_";
     if(!infile.is_open())
         cout<<"Open file failure"<<endl;
     int T=0;

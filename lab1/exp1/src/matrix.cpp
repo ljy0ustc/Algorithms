@@ -53,9 +53,9 @@ void Print_Optimal_Parents(int i,int j)
 }
 int main()
 {
-    infile.open(".\\exp1\\input\\1_1_input.txt", ios::in);
-    resfile.open(".\\exp1\\output\\result.txt",ios::out);
-    timefile.open(".\\exp1\\output\\time.txt",ios::out);
+    infile.open("..\\input\\1_1_input.txt", ios::in);
+    resfile.open("..\\output\\result.txt",ios::out);
+    timefile.open("..\\output\\time.txt",ios::out);
     if(!infile.is_open())
         cout<<"Open file failure"<<endl;
     int T=0;
