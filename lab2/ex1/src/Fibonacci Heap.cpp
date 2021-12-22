@@ -27,7 +27,7 @@ class Heap
         Node* min;
         list<Node*> root_list;
 };
-std::unordered_map<int,Node* > node_map;
+Node* node_map[1001];
 class Util
 {
     public:
@@ -61,7 +61,7 @@ Node* Util::Fib_Make_Node(int val)
 int Util::Fib_Heap_Insert(Heap* H,int val)
 {
     Node* x=Util::Fib_Make_Node(val);
-    node_map.insert({val,x});
+    node_map[val]=x;
     x->degree=0;
     x->p=NULL;
     x->mark=false;
@@ -107,14 +107,14 @@ int Util::Fib_Heap_Extract_Min(Heap* H)
             x->p=NULL;
         }
         H->root_list.remove(z);
-        node_map.erase(z->key);
+        node_map[z->key]=NULL;
         if(H->root_list.size()==0)
         {
             H->min=NULL;
         }
         else
         {
-            H->min=NULL;///////////////
+            H->min=NULL;
             Util::Consolidate(H);
         }
         H->n=H->n-1;
@@ -211,8 +211,8 @@ int Util::Fib_Heap_Decrease_Key(Heap* H,Node* x,int k)
     {
         cout<<"new key is greater than current key"<<endl;
     }
-    node_map.erase(x->key);
-    node_map.insert({k,x});
+    node_map[x->key]=NULL;
+    node_map[k]=x;
     x->key=k;
     Node* y=x->p;
     if(y && x->key < y->key)
@@ -242,6 +242,8 @@ int main()
     timefile.open(".//ex1//output//time.txt", ios::out);
     int num;
     Util util;
+    for(int i=0;i<=1000;i++)
+        node_map[i]=NULL;
     Heap* H1=util.Fib_Init_Heap();
     Heap* H2=util.Fib_Init_Heap();
     Heap* H3=util.Fib_Init_Heap();
