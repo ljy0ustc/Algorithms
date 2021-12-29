@@ -1,5 +1,8 @@
-6.1us
-8.4us
-16.4us
-32.4us
-66.1us
+(2,13)
+6us 8us 16us 32us 65us 
+(2,1009)
+3us 6us 13us 27us 54us 
+(10,13)
+4us 8us 16us 32us 64us 
+(10,1009)
+3us 6us 13us 27us 54us 

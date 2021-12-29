@@ -17,6 +17,7 @@ int prime_q[]={13,1009,13,1009};
 int shift[5000];
 int cnt=0,false_cnt=0;
 int f_cnt[5];
+int tt[5][5];
 void RK_Matcher(const string& P,const string& T,int d,int q)
 {
     int n=T.length(),m=P.length();
@@ -74,24 +75,17 @@ int main()
         infile>>P>>T;
         for(int i=0;i<4;i++)
         {
-            if(i==0)
-            {
-                QueryPerformanceFrequency(&large_interger);  
-                dff = large_interger.QuadPart;  
-                QueryPerformanceCounter(&large_interger);  
-                c1 = large_interger.QuadPart; 
-            }
+            QueryPerformanceFrequency(&large_interger);  
+            dff = large_interger.QuadPart;  
+            QueryPerformanceCounter(&large_interger);  
+            c1 = large_interger.QuadPart; 
              
 
             RK_Matcher(P,T,base_d[i],prime_q[i]);
 
-            if(i==0)
-            {
-                QueryPerformanceCounter(&large_interger);  
-                c2 = large_interger.QuadPart; 
-                timefile<<(c2-c1)*1000000/dff<<"us"<<endl;
-            }
-            
+            QueryPerformanceCounter(&large_interger);  
+            c2 = large_interger.QuadPart; 
+            tt[K][i]=(c2-c1)*1000000/dff;
             f_cnt[i]=false_cnt-cnt;
         }
         resfile<<cnt<<endl;
@@ -102,6 +96,16 @@ int main()
             resfile<<shift[i]<<" ";
         resfile<<endl<<endl;
     }
+    for(int i=0;i<4;i++)
+    {
+        timefile<<"("<<base_d[i]<<","<<prime_q[i]<<")"<<endl;
+        for(int K=0;K<=4;K++)
+        {
+            timefile<<tt[K][i]<<"us"<<" ";
+        }
+        timefile<<endl;
+    }
+        
     infile.close();
     resfile.close();
     timefile.close();
